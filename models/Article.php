@@ -4,22 +4,23 @@ require __DIR__.'/../classes/DataBase.php';
 
 abstract class Article
 {
+    protected $db;
+
     abstract protected function getTable();
 
-    protected function getDb()
+    public function __construct()
     {
-        return new Db;
+        $this->db = new Db();
     }
+
 
     public function findAll()
     {
-        $db = new Db();
-        return $db->findAll('SELECT * FROM ' . $this->getTable());
+        return $this->db->findAll('SELECT * FROM ' . $this->getTable());
     }
 
     public function findOne($id)
     {
-        $db = new Db();
-        return $db->findAll('SELECT * FROM ' . $this->getTable() . ' WHERE id=' .$id);
+        return $this->db->findOne('SELECT * FROM ' . $this->getTable() . ' WHERE id=' .$id);
     }
 } 

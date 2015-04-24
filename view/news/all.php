@@ -14,5 +14,12 @@
     </article>
 <?php endforeach; ?>
 
+<footer style="background-color: gray">
+    <?php foreach ($this as $name => $value) : ?>
+        <?php  echo ($name); ?>
+    <?php endforeach; ?> = <?php var_dump($value); ?>
+
+</footer>
+
 </body>
 </html>

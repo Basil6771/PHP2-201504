@@ -1,5 +1,6 @@
 <?php
 
+
 $ctrl = !empty($_GET['ctrl']) ? $_GET['ctrl'] : 'news';
 $ctrlClassName = ucfirst($ctrl) . 'Controller';
 

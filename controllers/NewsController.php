@@ -2,29 +2,26 @@
 
 require __DIR__ . '/AbstractController.php';
 require __DIR__ . '/../models/NewsArticle.php';
+require __DIR__ . '/../classes/View.php';
 
 
 class NewsController
     extends AbstractController
 {
-    protected function getTemplatePath()
+    protected $view;
+    public function __construct()
     {
-        return  __DIR__ . '/../view/news/';
+        $this->view = new View(__DIR__ . '/../view/news');
+
     }
 
     public function actionAll()
     {
         $newsModel = new NewsArticle();
-        $items = $newsModel->findAll();
-        $this->render('all', ['items' => $items]);
+        $this->view->items = $newsModel->findAll();
+        $this->view->display('all');
 
     }
 
-
-    protected function render($template, $data)
-    {
-        extract($data);
-        require$this->getTemplatePath() . '/' . $template . '.php';
-    }
 
 }

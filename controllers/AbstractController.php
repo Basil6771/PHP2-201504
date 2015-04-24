@@ -3,12 +3,13 @@
 
 abstract class AbstractController
 {
-    abstract  protected function getTemplatePath();
 
     protected function render($template, $data)
     {
-        extract($data);
-        require$this->getTemplatePath() . '/' . $template . '.php';
+        foreach ($data as $key => $value ){
+            $$key = $value;
+        }
+        require $this->getTemplatePath() . '/' . $template . '.php';
     }
 
 } 

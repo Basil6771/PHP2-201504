@@ -3,6 +3,5 @@ return [
     'host' => 'localhost',
     'user' => 'root',
     'password' => '',
-    'dbname' => 'PHP2',
-
-];
+    'dbname' => 'php2',
+    ];

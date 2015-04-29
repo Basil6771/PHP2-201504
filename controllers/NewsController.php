@@ -17,8 +17,18 @@ class NewsController
 
     public function actionAll()
     {
-        $this->view->items = NewsArticle::findAll();
+        $art = new NewsArticle();
+        $art->title = 'Новая Новость';
+        $art->text = 'Вот она новая новость';
+        $art->insert();
+
+        var_dump($art);
+
+
+
+        /*$this->view->items = NewsArticle::findAll();
         $this->view->display('all');
+        */
 
     }
 

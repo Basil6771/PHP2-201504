@@ -11,6 +11,19 @@ class Db
 
     }
 
+    public function execute($sql, $params = [])
+    {
+        $sth = $this->dbh->prepare($sql);
+        return $sth->execute($params);
+
+    }
+
+    public function getId()
+    {
+        return $this->dbh->lastInsertId();
+
+    }
+
     public function findAll($class, $sql, $params = [])
     {
         $sth = $this->dbh->prepare($sql);

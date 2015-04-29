@@ -1,8 +1,5 @@
 <?php
 
-require __DIR__ . '/AbstractController.php';
-require __DIR__ . '/../models/NewsArticle.php';
-require __DIR__ . '/../classes/View.php';
 
 
 class NewsController
@@ -17,21 +14,27 @@ class NewsController
 
     public function actionAll()
     {
-        $art = new NewsArticle();
+        /*$art = new NewsArticle();
         $art->title = 'Новая Новость';
         $art->text = 'Вот она новая новость';
         $art->insert();
 
         var_dump($art);
-
-
-
-        /*$this->view->items = NewsArticle::findAll();
-        $this->view->display('all');
         */
+
+
+
+        $this->view->items = NewsArticle::findAll();
+        $this->view->display('all');
+
 
     }
 
+    public function actionOne()
+    {
+        $id = $_GET['id'];
+        var_dump(NewsArticle::findOne($id));
 
+    }
 
 }
